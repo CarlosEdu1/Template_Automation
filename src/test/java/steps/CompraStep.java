@@ -11,11 +11,10 @@ public class CompraStep {
 
     public CompraStep(){
         compraLogic = new CompraLogic();
-
     }
     @Given("eu acesso o site")
     public void eu_acesso_o_site() throws InterruptedException {
-      compraLogic.aiaiai();
+      compraLogic.oi();
     }
     @When("coloco um produto no carrinho")
     public void coloco_um_produto_no_carrinho() {
