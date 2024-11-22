@@ -6,23 +6,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
-public class CompraLogic {
+public class RemoveLogic {
 
     private WebDriver webDriver;
     private WebDriverWait wait;
 
-    public CompraLogic() {
-    webDriver = new ChromeDriver();
-    wait = new WebDriverWait(webDriver, Duration.ofSeconds(600));
+    public RemoveLogic(){
+        webDriver = new ChromeDriver();
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(600));
     }
 
-    public void entrarNoSite(){
-
+    public void entroSite(){
         webDriver.get("http://104.41.34.213");
         webDriver.manage().window().maximize();
     }
+
 
     public void clicaCategoria() throws InterruptedException {
 
@@ -53,10 +54,16 @@ public class CompraLogic {
 
     }
 
-    public void verificaCarrinho()throws InterruptedException{
+    public void verificaCarrinho()throws InterruptedException {
 
         WebElement carrinhoBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/header/div/div[2]/button[2]")));
         carrinhoBtn.click();//verifica se o carrinho adicionou o produto
+        Thread.sleep(5000);
+    }
+
+    public void removoProduto()throws InterruptedException{
+        WebElement removeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='radix-:r6:']/div[2]/section[1]/div/div[2]/div[2]/button[3]")));
+        removeBtn.click();//verifica se o carrinho removeu o produto
         Thread.sleep(5000);
         webDriver.close();
     }
